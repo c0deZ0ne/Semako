@@ -1,0 +1,6 @@
+*.css
+*.svg
+build
+vite-env.d
+*.cjs
+*vite.config.ts
