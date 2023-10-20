@@ -10,7 +10,7 @@ function Logout() {
       <div className="flex flex-row w-[100%]  cursor-pointer"  onClick={()=>dispatch(logout())}>
         <div className="flex flex-row flex-1 gap-[5%] item-center ">
           < BiLogInCircle className='text-[red] font-[16px] text-[24px]' cursor={'pointer'} />
-          Logout 
+           <div className='font-corsa-grotesk font-[400] text-[19px] text-[#696E7C]'>{'Logout'}</div> 
         </div>
       </div>
     </>
