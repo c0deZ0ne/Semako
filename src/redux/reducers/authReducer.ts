@@ -1,5 +1,5 @@
 
-import { LOGIN_FAILURE, LOGIN_SUCCESS,LOGOUT,REGISTERUSER } from "../actions-creators/authActions";
+import { LOGIN_FAILURE, LOGIN_SUCCESS,LOGOUT } from "../actions-creators/authActions";
 import { IAuthAction } from "../interfaces/Iauth";
 import { AuthInitailState } from "../services/AuthService";
 

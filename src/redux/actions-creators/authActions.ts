@@ -1,12 +1,12 @@
-import { IRegisterUser, User } from '../interfaces/Iauth';
+import { IRegisterSate, User } from '../interfaces/Iauth';
 import { nanoid } from 'nanoid';
 import SERVICES from '../../utils/webservices';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
-export const REGISTERUSER = "REGISTERUSER";
+export const REGISTER_USER = "REGISTER_USER";
 
-export const loginSuccess = (user:User) => ({
+export const loginSuccess = (user:IRegisterSate) => ({
   type: LOGIN_SUCCESS,
   payload: user,
 });
@@ -23,27 +23,19 @@ export const logout = () => {
   }
 };
 
-export const loginUser = async (username:string, password:string):Promise<User|null> => {
-        return  await SERVICES.post('/auth', {
-            username,
-            password,
-        }).then((response)=>{
-           return response.data
-        }).catch((error)=>{
-            return {
-              name:"dogubo Joshua",
-              email:"emason.tech@hmail.com",
-              password:nanoid(16)
-            }
-        });
-   
+export const loginUser = async (data:User) => {
+
+    return {
+      type:LOGIN_SUCCESS,
+        payload:{
+          ...data
+        }
+     }    
 };
 
-export const registerAccount = async (RegisterData:IRegisterUser):Promise<User|null> => {
-        return  await SERVICES.post('/register', {...RegisterData}).then((response)=>{
-           return response.data
-        }).catch((error)=>{
-          return {...RegisterData,password:nanoid(5)}
-        });
-   
+export const registerAccount =  (RegisterData:IRegisterSate) => {
+        return {
+          type:LOGIN_SUCCESS,
+            payload:{...RegisterData}
+         } 
 };

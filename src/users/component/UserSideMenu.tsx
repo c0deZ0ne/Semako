@@ -10,6 +10,7 @@ import Button from '../../users/component/Button';
 import { logout } from '../../redux/actions-creators/authActions';
 import { useDispatch } from 'react-redux';
 import { BiLogInCircle } from 'react-icons/bi';
+import Logout from './Logout';
 const UserSideMenu = ({
   handleMenu,
   showSideLinks,
@@ -86,9 +87,8 @@ const UserSideMenu = ({
           <div className="hidden lg:flex text-[#696E7C] font-Corsa-Grotesk max-sm:flex">
             {notification()}
           </div>
-          <div className="hidden lg:flex text-[#696E7C] max-sm:flex cursor-pointer items-center text-[1.5rem]" onClick={()=>dispatch(logout())}>
-           < BiLogInCircle className='text-[red]' cursor={'pointer'} />
-            <span className='pl-3 text-[1.2rem] '>Logout</span>
+          <div className='hidden lg:flex text-[#696E7C] font-Corsa-Grotesk max-sm:flex item-center gap-[15px]'>
+              <Logout/>
           </div>
         </div>
       </div>

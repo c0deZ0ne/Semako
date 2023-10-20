@@ -26,9 +26,6 @@ function AppRoutes() {
   const { pathname } = useLocation();
   const dispatch = useDispatch()
   const isAuthenticated = useSelector((state:CombinedState<combinedState>) =>state.auth.isAuthenticated);
-
-  console.log("authcated",isAuthenticated)
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);

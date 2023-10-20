@@ -22,7 +22,6 @@ const AdminSideMenu = ({
   handlePath: Function;
 }) => {
   const path = usePath();
-  console.log(showSideLinks);
   return (
     <div className="  h-[100%] w-[90%]  flex flex-col  relative  lg:border-t ">
       <div className=" relative w-[100%] h-[100%] flex flex-col ">

@@ -15,7 +15,6 @@ function transaction() {
 
   useEffect(() => {
     console.log(data);
-    // make request for new data here
   }, [data]);
 
   const tabs = ['Last 24hours', 'Last week', 'Last month', 'Last year'];

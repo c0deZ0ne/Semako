@@ -47,7 +47,6 @@ const Pagination: React.FC<PaginationProps> = ({
   }
 
   const handlePageChange = (page: number) => {
-    console.log(page);
     setPageRangeStart(page);
     onPageChange(page);
   };

@@ -79,7 +79,7 @@ export const UserNavbar = ({
                     {AlertBell(12)}
                   </div>
                   <div className="hidden md:flex">
-                    <Proffile path={'/admin/dashboard/profile'} />
+                    <Proffile path={'/user/dashboard/profile'} />
                   </div>
                 </div>
               </div>

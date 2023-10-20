@@ -76,7 +76,7 @@ const ResetPassword: FC = () => {
                     </div>
 
                     <div className="">
-                      <Link to={'/admin/reset-success'}>
+                      <Link to={'/user/reset-success'}>
                         <Button
                           type="submit"
                           text="Reset password"

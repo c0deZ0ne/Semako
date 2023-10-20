@@ -5,7 +5,6 @@ function Card({
 }: {
   data: dashboardcard;
 }) {
-  console.log(color, title);
   return (
     <div
       className={`w-[99%] pt-2 h-[100%] bg-white px-[1rem]  border-b-2 border-solid ${

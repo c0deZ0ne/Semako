@@ -94,7 +94,7 @@ const payment: FC = () => {
                 </label>
 
                 <div className="">
-                  <Link to={'/admin/dashboard'}>
+                  <Link to={'/user/dashboard'}>
                     <Button
                       type="submit"
                       text={'Pay $120'}

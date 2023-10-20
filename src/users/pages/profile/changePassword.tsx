@@ -57,7 +57,7 @@ const ChangePAssword: FC = () => {
             </div>
 
             <div className=" mb-10">
-              <Link to={'/admin/reset-success'}>
+              <Link to={'/user/reset-success'}>
                 <Button
                   type="submit"
                   text="Save changes"

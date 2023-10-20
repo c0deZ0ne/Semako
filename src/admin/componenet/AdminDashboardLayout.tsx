@@ -50,7 +50,6 @@ export default function Layout({ children }: any) {
 
   const handlePath = (path: string) => {
     setDisplaPath(path);
-    console.log(path);
   };
 
   return (

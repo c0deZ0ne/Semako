@@ -5,8 +5,6 @@ import { ratingStar } from '../../../assets/icon';
 ratingStar;
 function UserRating({ rate, title, type, value, description }: any) {
   const val = parseInt(value);
-  console.log(val);
-
   let userStars = [];
   for (let i = 0; i < 5; i++) {
     if (i < val) {

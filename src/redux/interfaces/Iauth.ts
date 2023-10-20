@@ -10,15 +10,20 @@ export type User = {
     email:string
     image:string
     avatar:string,
-    passeord?:"string"
+    passeord:string
 }
    
-export interface IRegisterUser{
+export interface IRegisterSate {
   email:string;
   username:string,
+  image:string
   password:string,
   name:string,
   avatar:string
+  }
+
+  export interface RegisterUsers {
+    users: IRegisterSate[];
   }
 
 

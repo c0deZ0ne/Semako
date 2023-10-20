@@ -16,7 +16,7 @@ const PersonalInfo: FC = () => {
   const userData = {
     image: '',
     email: 'hanzabobson@gmail.com',
-    accountType: 'Main admin'
+    accountType: 'Main User'
   };
   const winwith = useWidth();
   return (
@@ -106,7 +106,7 @@ const PersonalInfo: FC = () => {
               </div>
 
               <div className=" mb-10">
-                <Link to={'/admin/reset-success'}>
+                <Link to={'/user/reset-success'}>
                   <Button
                     type="submit"
                     text="Save changes"

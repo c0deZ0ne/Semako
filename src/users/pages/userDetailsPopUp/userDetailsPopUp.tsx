@@ -12,9 +12,6 @@ import { closeModal } from '../../../redux/actions-creators/modalActions';
 
 function userDetailsPopUp({ details }: any) {
   const [revieweSection, setReviewSection] = useState('Edit');
-
-  console.log(details);
-
   const data = [
     { type: 'Customers', value: '12,000' },
     { type: 'Sales', value: 'USD $22,897' },

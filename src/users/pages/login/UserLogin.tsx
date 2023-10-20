@@ -6,35 +6,35 @@ import eye from '../../../assets/eye.svg';
 import key from '../../../assets/key.svg';
 import Button from '../../component/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFailure, loginSuccess, loginUser } from '../../../redux/actions-creators/authActions';
+import { loginSuccess, loginUser } from '../../../redux/actions-creators/authActions';
 import { startLoading, stopLoading } from '../../../redux/actions-creators/appSatusActions';
 import { failure, success } from '../../../redux/actions-creators/notificationActions';
 import { combinedState } from '../../../redux/reducers';
 import { CombinedState } from 'redux';
+import { IRegisterSate } from '../../../redux/interfaces/Iauth';
 const UserLogin: FC = () => {
   const [loginFormData, setLoginFormData] = useState({username:"",password:""});
   const isAuthenticated = useSelector((state:CombinedState<combinedState>) =>state.auth.isAuthenticated);
+  const allUsers  = useSelector((state:CombinedState<combinedState>) =>state.register);
+  const dispatch = useDispatch();
+  dispatch(stopLoading())
   console.log(isAuthenticated)
 if(isAuthenticated){
   window.location.href='/user/dashboard'
 }
-  const dispatch = useDispatch();
 
-  const handleLogin = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(startLoading())
     event.preventDefault()
-    const user = await loginUser(loginFormData.username,loginFormData.password)
-    if((user)){
-      dispatch(success({message:"Login Success"}))
-      dispatch(loginSuccess(user))
-
-    }else{
-      dispatch(loginFailure("failed to login"))
-      dispatch(stopLoading())
-      dispatch(failure({message:"Authentication Failed "}))
-    }
-    dispatch(stopLoading())
-
+    allUsers.find((user: IRegisterSate)=>{
+      if(user.password===loginFormData.password&&user.email===loginFormData.username){
+             dispatch(success({message:"Login Success"}))
+        setTimeout(()=>dispatch(loginSuccess(user))
+        ,1000)
+      }else{
+        dispatch(failure({message:"Authenticatil failed"}))
+      }
+    })
   };
   
   const handleInput =(event: React.ChangeEvent<HTMLInputElement>)=>{

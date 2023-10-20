@@ -47,7 +47,7 @@ const PasswordSuccess: FC = () => {
                       </span>
                     </div>
                     <div className=" items-center  justify-center  flex  flex-row w-[100%]">
-                      <Link to={'/admin/dashboard'}>
+                      <Link to={'/user/dashboard'}>
                         <Button
                           type="submit"
                           text="log in "

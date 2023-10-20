@@ -15,8 +15,6 @@ function customer() {
   const [data, setData] = useState('Last 24Hours');
 
   useEffect(() => {
-    console.log(data);
-    // make request for new data here
   }, [data]);
 
   const tabs = ['Last 24hours', 'Last week', 'Last month', 'Last year'];
@@ -32,7 +30,6 @@ function customer() {
   const cad = useMemo(() => Cards, [Cards]);
 
   const customersDetails = cad.find((index) => {
-    console.log(index);
     return index.title == 'Total Customers';
   });
 

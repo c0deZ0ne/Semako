@@ -1,14 +1,14 @@
-import { REGISTERUSER } from '../actions-creators/authActions';
+import { REGISTER_USER } from '../actions-creators/authActions';
+import { RegisterInitialState } from '../services/AuthService';
 
-export const USERSINITIALSTATE = [
-    {email:"emason.tech@gmil.com",password:"password123456",name:"Dogubo Joshua",avatar:null},
-    {email:"dogubo.joshua@gmil.com",password:"password123456",name:"Praise Dogubo",avatar:null}
-  ]
-export const registerReducer = (state = USERSINITIALSTATE, action:any ) => {
-    console.log(action)
+
+export const registerReducer = (state = RegisterInitialState, action:any ) => {
   switch (action.type) {
-    case REGISTERUSER:
-      return { ...state,  ...action.payload };
+    case REGISTER_USER:
+      const newState =  [ ...state,  action.payload ];
+      return newState
+    default :
+      return state
   }
 };
 

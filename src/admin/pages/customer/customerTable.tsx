@@ -53,9 +53,7 @@ const haddleClose = ()=>{
     const userOption = actionType.currentTarget.attributes
       .getNamedItem('value')
       ?.value.toString();
-    console.log(userOption);
     if (userOption == 'view') {
-      console.log(data);
       dispatch(openModal({element: (<UserDetailsPopUp details={data} />)}));
     } else {
       return null;

@@ -1,22 +1,39 @@
-import React, { FC, SyntheticEvent, useState } from 'react';
+import React, { FC, SyntheticEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import smebudLogo from '../../../assets/smebud_logoTwo.svg';
 import rectangle from '../../../assets/background.svg';
 import eye from '../../../assets/eye.svg';
 import key from '../../../assets/key.svg';
 import Button from '../../component/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRegisterSate } from '../../../redux/interfaces/Iauth';
+import { CombinedState } from 'redux';
+import { combinedState } from '../../../redux/reducers';
+import { success } from '../../../redux/actions-creators/notificationActions';
+import { registerAccount } from '../../../redux/actions-creators/authActions';
 const UserRegister: FC = () => {
-  const [RegisterFormData, setRegisterFormData] = useState({username:"",password:""});
-  const handleAcountRegister = (e:SyntheticEvent)=>{
-  e.preventDefault()
-    console.log("register",RegisterFormData)
-
+  const currentUser  = useSelector((state:CombinedState<combinedState>) =>state.register);
+  const [RegisterFormData, setRegisterFormData] = useState<IRegisterSate>({
+    username: "", password: "", email: '', avatar: '',
+    name: '',image:''
+  });
+  const dispatch = useDispatch()
+  const handleAcountRegister = async (e:SyntheticEvent)=>{
+    e.preventDefault()    
+    const action = { type: 'REGISTER_USER', payload: RegisterFormData }
+    dispatch(registerAccount(RegisterFormData))
+    setTimeout(()=>{
+      currentUser
+      location.href='/'
+    },1500)
+    dispatch (success({message:"Registered successfully"}))
   }
 
   const handleInput =(event: React.ChangeEvent<HTMLInputElement>)=>{
     const {name, value} = event.target;
     setRegisterFormData({...RegisterFormData, [name]: value});
   }
+
   return (
     <div className=" grid-cols-1 relative grid md:grid-cols-2 bg-[white] ">
       <section className=" hidden md:grid md:grid-cols-1 ">
@@ -52,14 +69,31 @@ const UserRegister: FC = () => {
                         className={`${createAcctStyles.formText} mb-[8px]`}
                         htmlFor="username"
                       >
+                        Enter fullname
+                      </label>
+                      <input
+                        className="h-[52px] appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
+                        id="name"
+                        type="text"
+                        name='name'
+                        value={RegisterFormData.name}
+                        onChange={handleInput}
+                        placeholder="johndoe@gmail.com"
+                      />
+                    </div>
+                    <div className="mb-4 ">
+                      <label
+                        className={`${createAcctStyles.formText} mb-[8px]`}
+                        htmlFor="email"
+                      >
                         Email address
                       </label>
                       <input
                         className="h-[52px] appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
-                        id="username"
+                        id="email"
                         type="text"
-                        name='username'
-                        value={RegisterFormData.username}
+                        name='email'
+                        value={RegisterFormData.email}
                         onChange={handleInput}
                         placeholder="johndoe@gmail.com"
                       />
