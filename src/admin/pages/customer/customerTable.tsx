@@ -61,7 +61,7 @@ const haddleClose = ()=>{
   };
 
   return (
-    <TableContainer className="grid col-span-full my-[24px]  font-[500] text-[16px] text-[#696E7C]  w-[100%] h-[100%] overflow-y-auto ">
+    <TableContainer className="grid col-span-full my-[24px]  font-[500] text-[16px] text-[#696E7C]  w-[100%] h-[100%] whitespace-nowrap overflow-auto scrollbar-hide whitespace-nowrap overflow-auto scrollbar-hide ">
       <Table
         className="grid grid-cols-6   h-[100%] font-[500] text-[16px] text-[#696E7C]  bg-white  "
         style={{ boxShadow: '0px 40px 80px 0px rgba(0, 0, 0, 0.05)' }}

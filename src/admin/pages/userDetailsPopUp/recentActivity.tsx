@@ -35,7 +35,7 @@ function recentActivity() {
 
         <div
           className={`flex  flex-col px-[16px] max-sm:mt-[20px]  align-middle  overflow-hidden items-center  text-[12px] w-[100%]  justify-between  mt-2   ${
-            !viewAll ? 'overflow-y-auto h-[80%] ' : ''
+            !viewAll ? 'whitespace-nowrap overflow-auto scrollbar-hide h-[80%] ' : ''
           }px-[16px]`}
         >
           {display.map((review: any) => (

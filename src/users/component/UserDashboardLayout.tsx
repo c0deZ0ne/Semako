@@ -55,7 +55,7 @@ export default function Layout({ children }: any) {
 
   return (
     <>
-      <section className=" h-[100vh]   overflow-y-auto max-w-screen-2xl  antialiased justify-items-center   w-[100vw] justify-center  grid grid-cols-12 ">
+      <section className=" h-[100vh]  scrollbar-hide max-w-screen-2xl  antialiased justify-items-center   w-[100vw] justify-center  grid grid-cols-12 whitespace-nowrap overflow-auto scrollbar-hide">
         <section className=" top-2 col-span-12 h-[80px] ">
           <UserNavbar
             handleMenu={handleMenu}
@@ -68,7 +68,7 @@ export default function Layout({ children }: any) {
 
         <>
           {sideMenu && (
-            <section className=" relative max-sm:absolute max-md:max-w-[100%] max-md:absolute  max-sm:overflow-hidden md:overflow-hidden h-[100vh] md:col-span-1 lg:col-span-2 w-[100%] col-span-12 z-[100] flex ">
+            <section className=" relative max-sm:absolute max-md:max-w-[100%] max-md:absolute  max-sm:overflow-hidden md:overflow-hidden h-[100vh] md:col-span-1 lg:col-span-2 w-[100%] col-span-12 z-[100] flex scrollbar-hide whitespace-nowrap overflow-auto scrollbar-hide ">
               {
                 <Sidebar
                   showSideLinks={showSideLinks}
@@ -82,7 +82,7 @@ export default function Layout({ children }: any) {
             </section>
           )}
         </>
-        <section className=" overflow-y-auto  py-2 px-1 relaitve md:col-span-11 col-span-12 lg:relative md:relative w-[100%] h-[100%] max-sm:border-0  lg:col-span-10 border-[1px]  ">
+        <section className=" whitespace-nowrap overflow-auto scrollbar-hide  py-2 px-1 relaitve md:col-span-11 col-span-12 lg:relative md:relative w-[100%] h-[100%] max-sm:border-0  lg:col-span-10 border-[1px] scrollbar-hide whitespace-nowrap overflow-auto scrollbar-hide ">
           <Outlet />
         </section>
       </section>

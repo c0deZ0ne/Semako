@@ -22,7 +22,7 @@ const PersonalInfo: FC = () => {
   const winwith = useWidth();
   return (
     <>
-      <div className="flex-col w-[100%]  md:pt-5 max-sm:justify-center overflow-x-auto max-sm:flex  max-sm:flex-col lg:grid grid-cols-12 md:h-[100vh]  max-sm:px-[2%]    overflow-y-auto ">
+      <div className="flex-col w-[100%]  md:pt-5 max-sm:justify-center whitespace-nowrap overflow-auto scrollbar-hide max-sm:flex  max-sm:flex-col lg:grid grid-cols-12 md:h-[100vh]  max-sm:px-[2%]    whitespace-nowrap overflow-auto scrollbar-hide ">
         <section
           style={{
             boxShadow: `${

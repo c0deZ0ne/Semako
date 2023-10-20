@@ -48,11 +48,11 @@ function userDetailsPopUp({ details }: any) {
     return  dispatch(closeModal())
   }
   return (
-    <section className="flex flex-col absolute right-[0%] h-[100%] w-[100%] md:w-[557px] justify-center  -z-0 overflow-y-auto ">
+    <section className="flex flex-col absolute right-[0%] h-[100%] w-[100%] md:w-[557px] justify-center  -z-0 whitespace-nowrap overflow-auto scrollbar-hide ">
       <section className="absolute" onClick={haddleClose}>
         <CloseIcon closeModal={haddleClose} />
       </section>
-      <section className=" bg-white p-[16px]  w-[100%] flex-col overflow-y-auto h-[1721px] justify-center items-center align-middle ">
+      <section className=" bg-white p-[16px]  w-[100%] flex-col whitespace-nowrap overflow-auto scrollbar-hide h-[1721px] justify-center items-center align-middle ">
         <section className="flex flex-col relative rounded-lg w-[100%] h-[600px] max-sm:h-[893px] border border-[#F1F1F1] ">
           <div className="   max-sm:h-[200px] max-sm:relative  mb-10   ">
             <div className=" flex  flex-row p-[16px] justify-between w-[100%]">

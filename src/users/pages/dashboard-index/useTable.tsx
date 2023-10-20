@@ -15,9 +15,9 @@ export default function userTable({
   userTabeData: userTableDataType[];
 }) {
   return (
-    <TableContainer className="grid col-span-full  font-[500] text-[16px] text-[#696E7C]  w-[100%] h-[100%] overflow-y-auto ">
+    <TableContainer className="grid col-span-full  font-[500] text-[16px] text-[#696E7C]  w-[100%] h-[100%] whitespace-nowrap overflow-auto scrollbar-hide  whitespace-nowrap overflow-auto scrollbar-hide">
       <Table
-        className="grid grid-cols-6 bor    overflow-y-auto h-[100%] font-[500] text-[16px] text-[#696E7C]  "
+        className="grid grid-cols-6 bor    whitespace-nowrap overflow-auto scrollbar-hide h-[100%] font-[500] text-[16px] text-[#696E7C] whitespace-nowrap overflow-auto scrollbar-hide  "
         style={{ boxShadow: '0px 40px 80px 0px rgba(0, 0, 0, 0.05)' }}
       >
         <TableHead className="grid  max-h-[24px] border-b-2 border-b-[#F1F1FF] tfont-[500] text-[16px] text-[#696E7C] ">

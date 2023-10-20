@@ -40,17 +40,17 @@ function DashboardIndex() {
   const cad = useMemo(() => Cards, [Cards]);
   return (
     <div className="w-[100%] h-[150vh] max-sm:mt-10  flex-col pt-[10px] max-sm:px-[2%] lg:px-10 ">
-      <div className=" w-[100%] overflow-y-auto gap-5 grid grid-cols-12 max-sm:flex max-sm:flex-col max-sm:gap-10 align-top h-[100%] ">
+      <div className=" w-[100%] whitespace-nowrap overflow-auto scrollbar-hide gap-5 grid grid-cols-12 max-sm:flex max-sm:flex-col max-sm:gap-10 align-top h-[100%] whitespace-nowrap overflow-auto scrollbar-hide ">
         <Tab.Group manual onChange={hadlechange}>
           <div
-            className="flex flex-col col-span-12  max-sm-gap-10"
+            className="flex flex-col col-span-12  max-sm-gap-10 whitespace-nowrap overflow-auto scrollbar-hide"
             style={{ boxShadow: '0px 40px 80px 0px rgba(0, 0, 0, 0.05)' }}
           >
             <div className="flex w-[100%] md:h-[48px] justify-between items-center col-span-12 max-sm:flex-col max-sm:gap-10  ">
-              <div className=" w-[100%] flex  col-span-7 relative justify-end overflow-x-auto  ">
+              <div className=" w-[100%] flex  col-span-7 relative justify-end whitespace-nowrap overflow-auto scrollbar-hide whitespace-nowrap overflow-auto scrollbar-hide ">
                 <Tab.List
                   className={
-                    'text-[#565C6B] font-[400] flex-row w-[100%]   items-center  h-[40px]   text-[14px] flex   font-Corsa-Grotesk '
+                    'text-[#565C6B] font-[400] flex-row w-[100%]   items-center  h-[40px]   text-[14px] flex   font-Corsa-Grotesk  whitespace-nowrap overflow-auto scrollbar-hide'
                   }
                 >
                   {tabs.map((tab) => (
@@ -87,7 +87,7 @@ function DashboardIndex() {
                 </>
               </div>
             </div>
-            <div className="flex overflow-x-auto mt-10  lg:flex-row gap-5 col-span-12 w-[100%] max-md:flex-col ">
+            <div className="flex whitespace-nowrap overflow-auto scrollbar-hide mt-10  lg:flex-row gap-5 col-span-12 w-[100%] max-md:flex-col whitespace-nowrap overflow-auto scrollbar-hide ">
               {cad.map((data: dashboardcard) => (
                 <Card data={data} key={nanoid(4)} />
               ))}
@@ -95,10 +95,10 @@ function DashboardIndex() {
           </div>
           <Tab.Panels
             className={
-              '  gap-5  grid grid-cols-12 col-span-12 w-[100%]  bg-white  mt-5 max-sm:overflow-auto  max-sm:p-2 max-sm:justify-center '
+              '  gap-5  grid grid-cols-12 col-span-12 w-[100%]  bg-white  mt-5 max-sm:overflow-auto  max-sm:p-2 max-sm:justify-center whitespace-nowrap overflow-auto scrollbar-hide '
             }
           >
-            <div className=" h-[500px] relative  w-[100%] col-span-12 border rounded-lg border-1 border-[#F1F1F1] overflow-y-auto">
+            <div className=" h-[500px] relative  w-[100%] col-span-12 border rounded-lg border-1 border-[#F1F1F1] whitespace-nowrap overflow-auto scrollbar-hide whitespace-nowrap overflow-auto scrollbar-hide">
               <div className="  flex   w-[100%] justify-center col-span-12 flex-col h-[64px] border-b-[1px]   ">
                 <span className="flex text-[#565C6B] font-Corsa-Grotesk font-[500] ml-[20px] ">
                   Customer Profile
@@ -114,13 +114,13 @@ function DashboardIndex() {
                   </div>
                 </div>
 
-                <div className="bg-white h-[100%] row-span-5  overflow-y-auto max-sm:col-span-12 lg:col-span-12   flex flex-com  items-stretch md:col-span-12  max-md:col-span-12  w-[100%] z-[1000]">
+                <div className="bg-white h-[100%] row-span-5  whitespace-nowrap overflow-auto scrollbar-hide max-sm:col-span-12 lg:col-span-12   flex flex-com  items-stretch md:col-span-12  max-md:col-span-12  w-[100%] z-[1000] whitespace-nowrap overflow-auto scrollbar-hide">
                   <UserTable userTabeData={userTabeData} />
                 </div>
               </div>
             </div>
 
-            <div className=" relative col-span-12 row-span-6 h-[600px] border pt-[24px] overflow-x-auto grid grid-cols-12 ">
+            <div className=" relative col-span-12 row-span-6 h-[600px] border pt-[24px] whitespace-nowrap overflow-auto scrollbar-hide grid grid-cols-12 whitespace-nowrap overflow-auto scrollbar-hide ">
               <div className="w-[100%] row-span-1 object-contain  max-sm:items-start max-sm:justify-center    col-span-12  flex  max-sm:flex-col gap-5 flex-row  justify-between  max-sm:px-[3%] md:px-[16px] relative ">
                 <div className="flex flex-col gap-5">
                   <span className="text-[#565C6B] w-[129px] h-[24px] font-Corsa-Grotesk font-[400] text-[16px]">
@@ -136,7 +136,7 @@ function DashboardIndex() {
                 </div>
               </div>
 
-              <div className="relative col-span-12 row-span-5 flex  w-[100%] h-[400px] overflow-x-auto flex-col ">
+              <div className="relative col-span-12 row-span-5 flex  w-[100%] h-[400px] whitespace-nowrap overflow-auto scrollbar-hide flex-col whitespace-nowrap overflow-auto scrollbar-hide">
                 <div className="relativet flex min-w-[1024px] h-[500px] flex-col mt-10">
                   <Chart />
                 </div>
