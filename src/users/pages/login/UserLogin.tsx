@@ -26,15 +26,10 @@ if(isAuthenticated){
   const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(startLoading())
     event.preventDefault()
-    allUsers.find((user: IRegisterSate)=>{
-      if(user.password===loginFormData.password&&user.email===loginFormData.username){
-             dispatch(success({message:"Login Success"}))
-        setTimeout(()=>dispatch(loginSuccess(user))
-        ,1000)
-      }else{
-        dispatch(failure({message:"Authenticatil failed"}))
-      }
-    })
+   const userData =  allUsers.find((user: IRegisterSate)=>(user.password===loginFormData.password&&user.email===loginFormData.username))  
+  if(userData)setTimeout(()=>dispatch(loginSuccess(userData)))
+  dispatch(failure({message:"Authentication failed"}))
+  dispatch(startLoading())
   };
   
   const handleInput =(event: React.ChangeEvent<HTMLInputElement>)=>{

@@ -35,7 +35,7 @@ export const loginUser = async (data:User) => {
 
 export const registerAccount =  (RegisterData:IRegisterSate) => {
         return {
-          type:LOGIN_SUCCESS,
+          type:REGISTER_USER,
             payload:{...RegisterData}
          } 
 };
