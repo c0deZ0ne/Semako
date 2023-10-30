@@ -76,21 +76,6 @@ const dispatch = useDispatch()
                     'text-[#565C6B] font-[400] flex-row w-[100%]   items-center  h-[40px]   text-[14px] flex   font-Corsa-Grotesk  whitespace-nowrap overflow-auto scrollbar-hide'
                   }
                 >
-                  {/* {tabs.map((tab) => (
-                    <Tab as={Fragment} key={nanoid(5)}>
-                      {({ selected }) => (
-                        <pre
-                          className={` py-2 px-2 m-2 cursor-pointer md:px-3 font-Corsa-Grotesk text-[14px]  ${
-                            selected
-                              ? ' outline-none  border-b border-solid border-[#4B6EFF] text-[#4B6EFF]  '
-                              : null
-                          }`}
-                        >
-                          {tab}
-                        </pre>
-                      )}
-                    </Tab>
-                  ))} */}
                   Account Pin: {user?.pin}
                 </Tab.List>
               </div>
