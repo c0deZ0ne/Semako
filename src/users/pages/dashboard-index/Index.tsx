@@ -10,7 +10,6 @@ import UserTable from './useTable';
 import SearchBox from '../../component/seachBox';
 import ToggleAction from './toggleAction';
 import Chart from './chart/chart';
-import AppMenu from '../../component/Menu';
 import SchemeCard from '../../component/scheme-card';
 import { useSelector } from 'react-redux';
 import { CombinedState } from 'redux';
@@ -18,6 +17,7 @@ import { combinedState } from '../../../redux/reducers';
 import { useDispatch } from 'react-redux';
 import { SubscribeScheme } from '../../../redux/actions-creators/schemesActions';
 import { IAcountSchem } from '../../../redux/interfaces/Ischeme';
+import toast from 'react-hot-toast';
 
 function DashboardIndex() {
   const [data, setData] = useState('Last 24Hours');
@@ -30,6 +30,10 @@ const dispatch = useDispatch()
     console.log("schemes.........",schemes);
   }, [data,schemes]);
 
+
+  useEffect(() => {
+    // dispatch()
+  }, [activeScheme]);
 
   const handleChangeScheme = (e:any)=>{
     dispatch(SubscribeScheme(e.target.value))

@@ -58,14 +58,14 @@ export const USER_SIDEBAR_MENU: sidebarNavType[] = [
     link: '/user/dashboard',
     display: 'Dashboard'
   },
-  {
-    id: nanoid(),
-    label: 'Customer',
-    navPath: 'customer',
-    icon: messagesIcon,
-    link: '/user/dashboard/customer',
-    display: 'Customer'
-  },
+  // {
+  //   id: nanoid(),
+  //   label: 'Customer',
+  //   navPath: 'customer',
+  //   icon: messagesIcon,
+  //   link: '/user/dashboard/customer',
+  //   display: 'Customer'
+  // },
   {
     id: nanoid(),
     label: 'Payment',
@@ -74,14 +74,14 @@ export const USER_SIDEBAR_MENU: sidebarNavType[] = [
     link: '/user/dashboard/payment',
     display: 'Payment Checkout'
   },
-  {
-    id: nanoid(),
-    label: 'Transactions',
-    navPath: 'transactions',
-    link: '/user/dashboard/transactions',
-    icon: invoicesIcon,
-    display: 'Transaction'
-  }
+  // {
+  //   id: nanoid(),
+  //   label: 'Transactions',
+  //   navPath: 'transactions',
+  //   link: '/user/dashboard/transactions',
+  //   icon: invoicesIcon,
+  //   display: 'Transaction'
+  // }
 ];
 
 export const LOGIN_USER = {
@@ -189,56 +189,6 @@ export const userTabeData: userTableDataType[] = [
     action: edit
   }
 ];
-
-// export const userAccountHistoryTable: userAccountHistory[] = [
-//   {
-//     id: nanoid(4),
-//     title: 'john doe',
-//     type: 'credit',
-//     email: 'johnsnow@gmail.com',
-//     date:new Date(),
-//     amount:'70000',
-//     action: edit
-//   },
-//   {
-//     id: nanoid(4),
-//     title: 'admin fee',
-//     type: 'debit',
-//     email: 'johnsnow@gmail.com',
-//     date:new Date(),
-//     amount:'1200',
-//     action: edit
-//   },
-//   {
-//     id: nanoid(4),
-//     title: 'monthly credit',
-//     type: 'credit',
-//     email: 'johnsnow@gmail.com',
-//     date:new Date(),
-//     amount:'2000',
-//     action: edit
-//   },
-//   {
-//     id: nanoid(4),
-//     title: 'Electricity',
-//     type: 'Debit',
-//     email: 'johnsnow@gmail.com',
-//     date:new Date(),
-//     amount:'70080',
-//     action: edit
-//   },
-//   {
-//     id: nanoid(4),
-//     title: 'Transport',
-//     type: 'Debit',
-//     email: 'johnsnow@gmail.com',
-//     date:new Date(),
-//     amount:'200',
-//     action: edit
-//   },
-  
-// ];
-
 
 export const actions: actiosTypes[] = [
   {
