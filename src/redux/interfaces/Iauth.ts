@@ -10,7 +10,8 @@ export type User = {
     email:string
     image:string
     avatar:string,
-    passeord:string
+    passeord:string,
+    phone:string,
 }
    
 export interface IRegisterSate {
@@ -20,6 +21,7 @@ export interface IRegisterSate {
   password:string,
   name:string,
   avatar:string
+  phone:string
   }
 
   export interface RegisterUsers {

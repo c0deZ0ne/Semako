@@ -3,7 +3,7 @@ import closeBtn from '../../assets/close.svg';
 import { Link } from 'react-router-dom';
 import notification from './notification';
 import { usePath } from '../../hooks/usePath';
-import { ADMIN_SIDEBAR_MENU } from '../constants';
+import { ADMIN_SIDEBAR_MENU } from '../admin-constants';
 import { nanoid } from 'nanoid';
 import { sidebarNavType } from '../../utils/interfaces';
 const AdminSideMenu = ({

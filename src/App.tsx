@@ -6,9 +6,10 @@ import ForgotPassword from './admin/pages/ForgotPassword/ForgotPassword';
 import ResetAdminPassword from './admin/pages/resetPassword/ResetPassword';
 import PasswordSuccess from './admin/pages/success/PasswordSuccess';
 import AdminDashboard from './admin/pages/dashboard/Admindashboard';
-import DashboardIndex from './admin/pages/dashboard-index/Index';
+import AdminDashboardIndex from './admin/pages/dashboard-index/Index';
+import UserDashboardIndex from './users/pages/dashboard-index/Index';
 import Customer from './admin/pages/customer';
-import Payment from './admin/pages/payment/payment';
+import Payment from './users/pages/payment/payment';
 import Transaction from './admin/pages/transaction';
 import Profile from './admin/pages/profile/profile';
 import { ModalProvider } from './hooks/modal-context';
@@ -49,7 +50,7 @@ function AppRoutes() {
           path="user/dashboard"
           element={<ProtectedRoute element={<UserDashboard />} />}
         >
-          <Route index element={<DashboardIndex />} />
+          <Route index element={<UserDashboardIndex />} />
           <Route path="customer" element={<Customer />} />
           <Route path="profile" element={<Profile />} />
           <Route path="payment" element={<Payment />} />
@@ -63,7 +64,7 @@ function AppRoutes() {
           path="admin/dashboard"
           element={<ProtectedRoute element={<AdminDashboard />} />}
         >
-          <Route index element={<DashboardIndex />} />
+          <Route index element={<AdminDashboardIndex />} />
           <Route path="customer" element={<Customer />} />
           <Route path="profile" element={<Profile />} />
           <Route path="payment" element={<Payment />} />

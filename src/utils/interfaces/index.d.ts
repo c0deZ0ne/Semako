@@ -17,7 +17,22 @@ export type dashboardcard = {
   period: string;
   color: string;
 };
+export type UserSchemeCard = {
+  title: string;
+  amaout: string;
+  schemeType:string
+  icon: string;
+  mountainIcon?: string;
+  rate: string;
+  period: string;
+  color: string;
+};
 
+export enum SchemeType {
+  "MONTHLY",
+  "QUATERLY",
+  "YEARLY"
+}
 export type userTableDataType = {
   email: string;
   id: string;
@@ -27,6 +42,15 @@ export type userTableDataType = {
   action: (id: any) => any;
 };
 
+export type userAccountHistory = {
+  email: string;
+  id: string;
+  title: string;
+  date: Date;
+  type:string;
+  amount: string;
+  action: (id: any) => any;
+};
 export type actiosTypes = {
   title: string;
   total: number | string | null | string;

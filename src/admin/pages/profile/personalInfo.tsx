@@ -6,7 +6,7 @@ import eye from '../../assets/eye.svg';
 import key from '../../assets/key.svg';
 import Button from '../../componenet/Button';
 import useWidth from '../../../hooks/useWidth';
-import { LOGIN_USER } from '../../constants';
+import { LOGIN_USER } from '../../admin-constants';
 import { camIcon } from '../../../assets/icon';
 import { CombinedState } from 'redux';
 import { combinedState } from '../../../redux/reducers';

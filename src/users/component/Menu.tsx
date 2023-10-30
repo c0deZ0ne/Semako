@@ -6,12 +6,14 @@ export default function AppMenu({
   menus,
   props,
   handleBar,
-  position
+  position,
+  menuTitle,
 }: {
   menus?: any;
   props?: any;
   handleBar?: any;
   position: any;
+  menuTitle?:string
 }) {
   return (
     <div className={`relative text-right outline-none  `}>
@@ -22,8 +24,9 @@ export default function AppMenu({
           <Menu.Button>
             {handleBar ? (
               <img className="w-[100%] h-[100%]" src={handleBar} alt="menu" />
-            ) : (
-              '...'
+            ) : (<span className='text-[#434A5B] font-Corsa-Grotesk'>{
+              menuTitle?menuTitle: '...'
+            }</span>
             )}
           </Menu.Button>
         </div>

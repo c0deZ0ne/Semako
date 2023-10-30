@@ -7,15 +7,15 @@ import { nanoid } from 'nanoid';
 function Barchart() {
   const chartMap: chartmapType[] = [
     {
-      title: 'Websites',
-      color: 'bg-[#DBE2FF]'
+      title: 'Earning',
+      color: 'bg-[#00AA55]'
     },
     {
-      title: 'E-commerce',
-      color: 'bg-[#4B6EFF]'
+      title: 'Deductions',
+      color: 'bg-[#FA3246]'
     },
     {
-      title: 'Domains',
+      title: 'Service fee',
       color: 'bg-[#A5B7FF]'
     }
   ];
@@ -59,22 +59,22 @@ function Barchart() {
 
     datasets: [
       {
-        label: 'Website',
-        data: [500, 400, 300, 400, 500, 300, 400],
-        backgroundColor: 'rgba(219, 226, 255, 1)',
+        label: 'Earnings',
+        data: [800, 600, 900, 750, 1000, 500, 400],
+        backgroundColor: '#00AA55',
         borderColor: 'rgba(219, 226, 255, 1)',
         borderWidth: 1
       },
       {
-        label: 'E-commerce',
-        data: [300, 400, 700, 450, 600, 400, 300],
-        backgroundColor: 'rgba(93, 125, 255, 1)',
+        label: 'Deductions',
+        data: [300, 400, 300, 450, 600, 400, 300],
+        backgroundColor: '#FA3246',
         borderColor: 'rgba(93, 125, 255, 1)',
         borderWidth: 1
       },
       {
-        label: 'Domain',
-        data: [300, 500, 400, 500, 100, 400, 500],
+        label: 'Service',
+        data: [300, 300, 400, 300, 100, 400, 300],
         backgroundColor: 'rgba(165, 183, 255, 1)',
         borderColor: 'rgba(165, 183, 255, 1)',
         borderWidth: 1

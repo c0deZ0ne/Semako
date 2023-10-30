@@ -1,24 +1,39 @@
-import React, { Fragment, useEffect, useMemo, useState } from 'react';
+import React, { Fragment, useEffect, useMemo, useState, } from 'react';
 import { Tab } from '@headlessui/react';
 import { nanoid } from 'nanoid';
 import Search from '../../component/innserSerachBox';
-import { Cards, actions, periods, userTabeData } from '../../constants';
+import { Cards, actions, periods, schemeCards,  userTabeData } from '../../user-constants';
 
 import Card from '../../component/card';
-import { dashboardcard } from '../../../utils/interfaces';
+import { dashboardcard,UserSchemeCard } from '../../../utils/interfaces';
 import UserTable from './useTable';
 import SearchBox from '../../component/seachBox';
 import ToggleAction from './toggleAction';
 import Chart from './chart/chart';
 import AppMenu from '../../component/Menu';
-import filterBy_large from '../../../assets/filterBy_large.svg';
+import SchemeCard from '../../component/scheme-card';
+import { useSelector } from 'react-redux';
+import { CombinedState } from 'redux';
+import { combinedState } from '../../../redux/reducers';
+import { useDispatch } from 'react-redux';
+import { SubscribeScheme } from '../../../redux/actions-creators/schemesActions';
+import { IAcountSchem } from '../../../redux/interfaces/Ischeme';
 
 function DashboardIndex() {
   const [data, setData] = useState('Last 24Hours');
+  const {transactions,AccountBallance} = useSelector((state:CombinedState<combinedState>) =>state.transaction);
+  const schemes = useSelector((state:CombinedState<combinedState>) =>state.scheme);
+  const activeScheme = schemes.find((s)=>(s.isActive===true))
+const dispatch = useDispatch()
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    console.log("transaction.........",AccountBallance);
+    console.log("schemes.........",schemes);
+  }, [data,schemes]);
 
+
+  const handleChangeScheme = (e:any)=>{
+    dispatch(SubscribeScheme(e.target.value))
+  }
   const tabs = ['Last 24hours', 'Last week', 'Last month', 'Last year'];
 
   const hadlechange = (index: any) => {
@@ -29,11 +44,7 @@ function DashboardIndex() {
     console.log(data);
   };
 
-  const fillterBy_data = [
-    { title: 'Month', menuIcon: null },
-    { title: '  Day', menuIcon: null },
-    { title: '  Year', menuIcon: null }
-  ];
+
   const action = (actionType: any) => {
     console.log(actionType);
   };
@@ -72,25 +83,18 @@ function DashboardIndex() {
               </div>
               <div className=" max-sm:w-[100%]  object-cover flex  max-sm:mx-[2%] ">
                 <>
-                  <AppMenu
-                    menus={fillterBy_data}
-                    handleBar={filterBy_large}
-                    position={{
-                      className:
-                        ' absolute  h-[100%] w-[95%] rounded-md max-sm:left-[20%] mt-2 '
-                    }}
-                    props={{
-                      onClick: action,
-                      className: `{group text-[#565C6B] bg-white border-none w-[100%] outline-none flex w-full items-center rounded-md p-2 m-2 text-sm hover:bg-[#00AA55] hover:text-white`
-                    }}
-                  />
+                <select name="" id="" onChange={(e)=>handleChangeScheme(e)}>
+                  {schemes.map((scheme)=>(<option value={scheme.id}>{scheme.schedule.toLocaleLowerCase()}</option>))}
+                </select>
+              
                 </>
               </div>
             </div>
             <div className="flex whitespace-nowrap overflow-auto scrollbar-hide mt-10  lg:flex-row gap-5 col-span-12 w-[100%] max-md:flex-col whitespace-nowrap overflow-auto scrollbar-hide ">
               {cad.map((data: dashboardcard) => (
-                <Card data={data} key={nanoid(4)} />
+                <Card data={data} key={nanoid(4)} AccountBallance={AccountBallance} />
               ))}
+              {activeScheme?(<SchemeCard data={activeScheme} />):"Select a Scheme"}
             </div>
           </div>
           <Tab.Panels
@@ -101,7 +105,7 @@ function DashboardIndex() {
             <div className=" h-[500px] relative  w-[100%] col-span-12 border rounded-lg border-1 border-[#F1F1F1] whitespace-nowrap overflow-auto scrollbar-hide whitespace-nowrap overflow-auto scrollbar-hide">
               <div className="  flex   w-[100%] justify-center col-span-12 flex-col h-[64px] border-b-[1px]   ">
                 <span className="flex text-[#565C6B] font-Corsa-Grotesk font-[500] ml-[20px] ">
-                  Customer Profile
+                Account History
                 </span>
               </div>
               <div className=" grid col-span-12 grid-cols-12 max-sm:gap-5 gap-10 md:px-[24px] ">
@@ -115,7 +119,7 @@ function DashboardIndex() {
                 </div>
 
                 <div className="bg-white h-[100%] row-span-5  whitespace-nowrap overflow-auto scrollbar-hide max-sm:col-span-12 lg:col-span-12   flex flex-com  items-stretch md:col-span-12  max-md:col-span-12  w-[100%] z-[1000] whitespace-nowrap overflow-auto scrollbar-hide">
-                  <UserTable userTabeData={userTabeData} />
+                  <UserTable accountHistoryData={transactions} />
                 </div>
               </div>
             </div>
@@ -128,7 +132,7 @@ function DashboardIndex() {
                   </span>
 
                   <pre className="w-[391px] flex text-[#565C6B]  h-[24px] font-Corsa-Grotesk font-[400] text-[12px]">
-                    of the week compared between domain E-commerce and websites
+                    of the week compared between service charge, earnings and deductions
                   </pre>
                 </div>
                 <div className=" text-[#696E7C] h-[40px] rounded-2xl max-sm:gap-1 max-sm:mb-5 max-w-[238px] items-center justify-center align-middle bg-[#F1F1F180] relative col-span-10  max-sm:w-[100%] max-md:w-[100%] max-sm:w-100% grid grid-cols-3 max-lg:w-[100%]">

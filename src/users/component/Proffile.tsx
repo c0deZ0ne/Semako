@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { LOGIN_USER } from '../../admin/constants';
+import { LOGIN_USER } from '../../admin/admin-constants';
 import { useSelector } from 'react-redux';
 import { combinedState } from '../../redux/reducers';
 import { CombinedState } from 'redux';

@@ -1,106 +1,119 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../component/Button';
 import Paypal_button from '../../component/payment/paypal_button';
+import { nanoid } from 'nanoid';
+import { calcPayStackFee } from '../../../utils';
+import { useSelector } from 'react-redux';
+import { combinedState } from '../../../redux/reducers';
+import { CombinedState } from 'redux';
+import { usePaystackPayment } from 'react-paystack';
+import { useDispatch } from 'react-redux';
+import { creditAccount } from '../../../redux/actions-creators/transactionActions';
+import { IAcountTransactions, ItransactionActions } from '../../../redux/interfaces/ITransaction';
+
 const payment: FC = () => {
+  const [paystackFee,setPaysyackFee] = useState({})
+  const [paystackConfig, setPaystackConfig] = useState<any>({})
+  const dispatch = useDispatch()
+  const [amount,setAmount] = useState(0)
+  const {user,isAuthenticated} = useSelector((state:CombinedState<combinedState>) =>state.auth);
+
+
+ 
+
+  useEffect(() => {
+    if(isAuthenticated&&user){
+        try {
+           calcPayStackFee(Number(amount)).then((data)=>{
+            setPaysyackFee(data)
+            const config =  {
+               amount:data.totalcost,
+               phone:user.phone,
+               email: user.email,
+               fullName: user.name,
+               publicKey:"pk_test_80d861a8e1528e0b9ff5768a25fd77900dd6707a",
+               metadata: {
+                 paymentId:nanoid(16),
+                 data
+               },
+             };
+         
+             setPaystackConfig( config)
+          })
+        
+        } catch (error) {
+          console.log(error)
+        } 
+    }
+  },[user,amount])
+
+  const handlePaystackSuccessPayment:any =  (ot:any) => {   
+  const payload:IAcountTransactions = {
+    email: user?.email?user.email:"",
+    id: ot.reference,
+    title: "credit account",
+    date: new Date(),
+    type:"credit",
+    amount: amount
+  }
+  dispatch(creditAccount(payload))
+
+    console.log(ot,"success")
+ }
+
+ const handleClosePaystackPayment = () => {
+  // toast.warn("Payment Cancelled")
+  console.log("cancelled")
+}
+  const initializePayment = usePaystackPayment(paystackConfig);
+
+
+  async function handlePaystack() {
+      try {
+        initializePayment(handlePaystackSuccessPayment, handleClosePaystackPayment)
+  
+      } catch (error) {
+        console.log(error)
+        // return toast.warning(error?.response?.data?.message)
+      }
+  }
+
   return (
     <>
       <div className="flex md:h-screen  items-top  justify-center text-[12px] pt-10 ">
         <div className=" max-sm:w-[100%] md:w-[426px] md:pl-6 md:pr-6 items-center justify-center ">
           <div className="bg-white md:shadow-2xl rounded md:w-[100%] sm:w-[100%] sm: px-[5%] items-center justify-center p-8">
             <div className="flex flex-col justify-center align-center ">
-              <Paypal_button />
+              Credit My Account 
             </div>
-            <div className="inline-flex relative my-[33px] items-center justify-center w-full">
-              <hr className="w-full h-px  bg-[#F1F1F1] border-0" />
-              <span
-                className={`absolute px-2 text-[14px] font-{400} -translate-x-1/2 font-Corsa-Grotesk bg-white left-1/2 text-[#696E7C]`}
-              >
-                {'Or'}
-              </span>
-            </div>
+          
             <div>
               <form className="relative  text-[#696E7C] font-Corsa-Grotesk">
-                <div className="mb-4 ">
+
+                <div className="mb-4 mt-4">
                   <label
                     className={`${createAcctStyles.formText} mb-[8px]`}
-                    htmlFor="card_number"
+                    htmlFor="Amount"
                   >
-                    Card Number
+                    Enter Amount
                   </label>
                   <input
                     className="h-[52px] pl-[15px] appearance-none border rounded-lg w-full py-2 px-3 text-[#696E7C] leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
-                    id="card_number"
+                    id="amount"
                     type="number"
-                    placeholder="1234 1234 1234 1234"
+                    onChange={(e)=>setAmount(Number(e.target.value))}
+                    placeholder="3000"
                   />
                 </div>
-
-                <div className="flex relative flex-row gap-10 w-[100%] align-middle items-center text-[12px] text-[#696E7C]">
-                  <label
-                    className={` max-sm:w-[100%] w-[180] `}
-                    htmlFor="Expiry"
-                  >
-                    {' Expiry(MM/YY)'}
-                    <input
-                      className="h-[48px] mt-[8px] pl-[15px] max-sm:w-full  flex  appearance-none border rounded-lg  text-[#696E7C] leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
-                      id="Expiry"
-                      type="text"
-                      placeholder="12/23"
-                    />
-                  </label>
-                  <label
-                    className={` max-sm:w-[100%] w-[180] `}
-                    htmlFor="Expiry"
-                  >
-                    {'CVV'}
-                    <input
-                      className="h-[48px] pl-[15px] mt-[8px] max-sm:w-full   flex  appearance-none border rounded-lg  text-[#696E7C] leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
-                      id="Expiry"
-                      type="text"
-                      placeholder="12/23"
-                    />
-                  </label>
-                </div>
-                <div className="mb-4 ">
-                  <label
-                    className={`${createAcctStyles.formText} mt-[24px]`}
-                    htmlFor="card_owner_name"
-                  >
-                    {'Name on card'}
-
-                    <input
-                      className="h-[52px] pl-[15px] mt-[8px]  appearance-none border rounded-lg w-full py-2 px-3 text-[#696E7C] leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
-                      id="card_owner_name"
-                      type="text"
-                      placeholder="Full name"
-                    />
-                  </label>
-                </div>
-
-                <label
-                  htmlFor="default-checkbox"
-                  className={` flex  my-[24px]  flex-row`}
-                >
-                  <input
-                    id="default-checkbox"
-                    type="checkbox"
-                    value=""
-                    className=" h-5 text-blue-600 cursor-pointer rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <span className=" flex text-[#696E7C] ml-[11px] font-Corsa-Grotesk text-[14px]">
-                    {'Save my details'}
-                  </span>
-                </label>
-
+        
                 <div className="">
-                  <Link to={'/user/dashboard'}>
+                
                     <Button
-                      type="submit"
-                      text={'Pay $120'}
+                      text="Credit"
+                      onClick={()=>handlePaystack()}
                       className="w-full outline-none border-none h-[10%] bg-[#000000] font-Corsa-Grotesk font-normal  text-[#FCFCFC]  py-[5px] px-4 text-[14px] rounded-lg"
                     />
-                  </Link>
                 </div>
               </form>
             </div>

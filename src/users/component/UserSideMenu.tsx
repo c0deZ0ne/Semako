@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import notification from './notification';
 import { usePath } from '../../hooks/usePath';
 import { nanoid } from 'nanoid';
-import { USER_SIDEBAR_MENU } from '../../users/constants';
+import { USER_SIDEBAR_MENU } from '../user-constants';
 import { sidebarNavType } from '../../utils/interfaces';
 import Button from '../../users/component/Button';
 import { logout } from '../../redux/actions-creators/authActions';

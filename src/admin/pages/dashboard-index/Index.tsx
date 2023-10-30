@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { Tab } from '@headlessui/react';
 import { nanoid } from 'nanoid';
 import Search from '../../componenet/innserSerachBox';
-import { Cards, actions, periods, userTabeData } from '../../constants';
+import { Cards, actions, periods, userTabeData } from '../../admin-constants';
 
 import Card from '../../componenet/card';
 import { dashboardcard } from '../../../utils/interfaces';

@@ -15,7 +15,7 @@ const UserRegister: FC = () => {
   const currentUser  = useSelector((state:CombinedState<combinedState>) =>state.register);
   const [RegisterFormData, setRegisterFormData] = useState<IRegisterSate>({
     username: "", password: "", email: '', avatar: '',
-    name: '',image:''
+    name: '',image:'',phone:''
   });
   const dispatch = useDispatch()
   const handleAcountRegister = async (e:SyntheticEvent)=>{
@@ -96,6 +96,23 @@ const UserRegister: FC = () => {
                         value={RegisterFormData.email}
                         onChange={handleInput}
                         placeholder="johndoe@gmail.com"
+                      />
+                    </div>
+                    <div className="mb-4 ">
+                      <label
+                        className={`${createAcctStyles.formText} mb-[8px]`}
+                        htmlFor="phone"
+                      >
+                        Phone Number
+                      </label>
+                      <input
+                        className="h-[52px] appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-gray-200"
+                        id="phone"
+                        type="text"
+                        name='phone'
+                        value={RegisterFormData.phone}
+                        onChange={handleInput}
+                        placeholder="+2348149220054"
                       />
                     </div>
                     <div className="mb-4 relative">

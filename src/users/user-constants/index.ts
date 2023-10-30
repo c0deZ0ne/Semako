@@ -9,13 +9,22 @@ import {
 
 import revenueIcon from '../../assets/revenue.svg';
 import cutomerIcon from '../../assets/cardPeopleIcon.svg';
+import adminPhoto from '../../assets/adminPhoto.svg';
+import { userTableDataType, actiosTypes,
+  dashboardcard,
+  sidebarNavType,
+  transactionTableDataType,
+  SchemeType,
+  UserSchemeCard,
+  userAccountHistory
+} from '../../utils/interfaces';
 import totalTransactionIcon from '../../assets/total_transaction.svg';
 import redMountain from '../../assets/red_mountain.svg';
 import greenMountain from '../../assets/green_mountain.svg';
 export const tabs = ['Last 24hours', 'Last week', 'Last month', 'Last year'];
 export const Cards: dashboardcard[] = [
   {
-    title: 'Total Revenue',
+    title: 'Account Ballance',
     amaout: '$600,976',
     icon: revenueIcon,
     mountainIcon: greenMountain,
@@ -23,34 +32,23 @@ export const Cards: dashboardcard[] = [
     period: 'vs last 7days',
     color: '#1AB366'
   },
-  {
-    title: 'Total Customers',
-    amaout: '$600,976',
-    icon: cutomerIcon,
-    mountainIcon: redMountain,
-    rate: '16%',
-    period: 'vs last 7days',
-    color: '#901EFF'
-  },
-  {
-    title: 'Total Transactions',
-    amaout: '$600,976',
-    icon: totalTransactionIcon,
-    mountainIcon: greenMountain,
-    rate: '16%',
-    period: 'vs last 7days',
-    color: ' #0099FE'
-  }
 ];
 
-import adminPhoto from '../../assets/adminPhoto.svg';
-import {
-  actiosTypes,
-  dashboardcard,
-  sidebarNavType,
-  transactionTableDataType
-} from '../../utils/interfaces';
-import { userTableDataType } from '../../utils/interfaces';
+export const schemeCards:UserSchemeCard[]=[
+  { 
+      title: 'Active Scheme',
+      schemeType:"Basic",
+      amaout: '$600,976',
+      icon: cutomerIcon,
+      mountainIcon: greenMountain,
+      rate: '6%',
+      period: 'monthly',
+      color: '#901EFF'
+    
+  }
+]
+
+
 export const USER_SIDEBAR_MENU: sidebarNavType[] = [
   {
     id: nanoid(5) as string,
@@ -192,18 +190,68 @@ export const userTabeData: userTableDataType[] = [
   }
 ];
 
+// export const userAccountHistoryTable: userAccountHistory[] = [
+//   {
+//     id: nanoid(4),
+//     title: 'john doe',
+//     type: 'credit',
+//     email: 'johnsnow@gmail.com',
+//     date:new Date(),
+//     amount:'70000',
+//     action: edit
+//   },
+//   {
+//     id: nanoid(4),
+//     title: 'admin fee',
+//     type: 'debit',
+//     email: 'johnsnow@gmail.com',
+//     date:new Date(),
+//     amount:'1200',
+//     action: edit
+//   },
+//   {
+//     id: nanoid(4),
+//     title: 'monthly credit',
+//     type: 'credit',
+//     email: 'johnsnow@gmail.com',
+//     date:new Date(),
+//     amount:'2000',
+//     action: edit
+//   },
+//   {
+//     id: nanoid(4),
+//     title: 'Electricity',
+//     type: 'Debit',
+//     email: 'johnsnow@gmail.com',
+//     date:new Date(),
+//     amount:'70080',
+//     action: edit
+//   },
+//   {
+//     id: nanoid(4),
+//     title: 'Transport',
+//     type: 'Debit',
+//     email: 'johnsnow@gmail.com',
+//     date:new Date(),
+//     amount:'200',
+//     action: edit
+//   },
+  
+// ];
+
+
 export const actions: actiosTypes[] = [
   {
-    title: 'Pending',
-    total: 50
+    title: 'All',
+    total: 70
   },
   {
-    title: 'Accepted',
-    total: 80
+    title: 'Earnings',
+    total: 20
   },
   {
-    title: 'Rejected',
-    total: 300
+    title: 'Deduction',
+    total: 30
   }
 ];
 

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useMemo, useState } from 'react';
 import { Tab } from '@headlessui/react';
 import { nanoid } from 'nanoid';
-import { Cards, customerAction, userTabeData } from '../../constants';
+import { Cards, customerAction, userTabeData } from '../../admin-constants';
 
 import Card from '../../componenet/card';
 import SearchBox from '../../componenet/seachBox';
