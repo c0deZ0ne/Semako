@@ -5,7 +5,7 @@ import Search from '../../component/innserSerachBox';
 import { Cards, actions, periods, schemeCards,  userTabeData } from '../../user-constants';
 
 import Card from '../../component/card';
-import { dashboardcard,UserSchemeCard } from '../../../utils/interfaces';
+import { dashboardcard } from '../../../utils/interfaces';
 import UserTable from './useTable';
 import SearchBox from '../../component/seachBox';
 import ToggleAction from './toggleAction';
@@ -16,9 +16,6 @@ import { CombinedState } from 'redux';
 import { combinedState } from '../../../redux/reducers';
 import { useDispatch } from 'react-redux';
 import { SubscribeScheme } from '../../../redux/actions-creators/schemesActions';
-import { IAcountSchem, shemeType } from '../../../redux/interfaces/Ischeme';
-import toast from 'react-hot-toast';
-import schedule from "node-schedule"
 import { debitAccount } from '../../../redux/actions-creators/transactionActions';
 import { shedulePay } from '../../../utils';
 import { success } from '../../../redux/actions-creators/notificationActions';
