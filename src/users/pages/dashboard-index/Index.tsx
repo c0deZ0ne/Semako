@@ -76,7 +76,7 @@ const dispatch = useDispatch()
                     'text-[#565C6B] font-[400] flex-row w-[100%]   items-center  h-[40px]   text-[14px] flex   font-Corsa-Grotesk  whitespace-nowrap overflow-auto scrollbar-hide'
                   }
                 >
-                  {tabs.map((tab) => (
+                  {/* {tabs.map((tab) => (
                     <Tab as={Fragment} key={nanoid(5)}>
                       {({ selected }) => (
                         <pre
@@ -90,7 +90,8 @@ const dispatch = useDispatch()
                         </pre>
                       )}
                     </Tab>
-                  ))}
+                  ))} */}
+                  Account Pin: {user?.pin}
                 </Tab.List>
               </div>
               <div className=" max-sm:w-[100%]  object-cover flex  max-sm:mx-[2%] ">

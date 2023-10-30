@@ -11,11 +11,12 @@ import { CombinedState } from 'redux';
 import { combinedState } from '../../../redux/reducers';
 import { success } from '../../../redux/actions-creators/notificationActions';
 import { registerAccount } from '../../../redux/actions-creators/authActions';
-const UserRegister: FC = () => {
+import { generatePin } from '../../../utils';
+const UserRegister: FC =  () => {
   const currentUser  = useSelector((state:CombinedState<combinedState>) =>state.register);
   const [RegisterFormData, setRegisterFormData] = useState<IRegisterSate>({
     username: "", password: "", email: '', avatar: '',
-    name: '',image:'',phone:''
+    name: '',image:'',phone:'',pin: generatePin(15)
   });
   const dispatch = useDispatch()
   const handleAcountRegister = async (e:SyntheticEvent)=>{

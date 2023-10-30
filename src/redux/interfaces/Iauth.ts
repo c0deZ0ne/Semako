@@ -12,6 +12,7 @@ export type User = {
     avatar:string,
     passeord:string,
     phone:string,
+    pin:string
 }
    
 export interface IRegisterSate {
@@ -21,7 +22,8 @@ export interface IRegisterSate {
   password:string,
   name:string,
   avatar:string
-  phone:string
+  phone:string,
+  pin:string
   }
 
   export interface RegisterUsers {
