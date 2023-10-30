@@ -18,10 +18,15 @@ import { useDispatch } from 'react-redux';
 import { SubscribeScheme } from '../../../redux/actions-creators/schemesActions';
 import { IAcountSchem } from '../../../redux/interfaces/Ischeme';
 import toast from 'react-hot-toast';
+import schedule from "node-schedule"
+import { debitAccount } from '../../../redux/actions-creators/transactionActions';
+import { shedulePay } from '../../../utils';
 
 function DashboardIndex() {
   const [data, setData] = useState('Last 24Hours');
   const {transactions,AccountBallance} = useSelector((state:CombinedState<combinedState>) =>state.transaction);
+  const user = useSelector((state:CombinedState<combinedState>) =>state.auth.user);
+
   const schemes = useSelector((state:CombinedState<combinedState>) =>state.scheme);
   const activeScheme = schemes.find((s)=>(s.isActive===true))
 const dispatch = useDispatch()
@@ -31,8 +36,33 @@ const dispatch = useDispatch()
   }, [data,schemes]);
 
 
+    // Create a rule to run the job every 10 minutes
+// const rule = new schedule.RecurrenceRule();
+// rule.minute = new schedule.Range(0, 10, 1);
+
+// Create the scheduled job
+// const job = schedule.scheduleJob(rule, function () {
+//   console.log('Job executed every 10 minutes');
+//   user&&activeScheme&&dispatch(debitAccount({
+//     title: "service fee", amount: activeScheme.charge, email: user.email, id: nanoid(6), date: new Date(),
+//     type: 'debit'
+//   }))
+// });
+
+
+
+
   useEffect(() => {
-    // dispatch()
+    if(activeScheme&&activeScheme.isActive&&user){
+      shedulePay(activeScheme.schedule,dispatch(debitAccount({
+        title: "admin charge",
+        email: user?.email,
+        id: nanoid(6),
+        date: new Date(),
+        type: 'debite',
+        amount: activeScheme?.charge
+      })))
+    }
   }, [activeScheme]);
 
   const handleChangeScheme = (e:any)=>{

@@ -6,7 +6,6 @@ import TableHead from '@mui/material/TableHead';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import { userAccountHistory, userTableDataType } from '../../../utils/interfaces';
 import { nanoid } from 'nanoid';
 import { IAcountTransactions } from '../../../redux/interfaces/ITransaction';
 
@@ -75,7 +74,7 @@ export default function userTable({
               <TableCell className=" max-h-[24px]  bg-[#ffff]  border-0  border-r-[2px] border-r-[#F1F1F1]  justify-between ">
                 <div className="flex max-h-[24px] text-[#696E7C] flex-row  justify-evenly gap-3  max-sm:flex-col h-100% ">
                   <pre className= {user.type=="credit"?"text-[#00AA55]  items-center w-[100px]  py-1 px-2 rounded-2xl font-Corsa-Grotesk":"items-center w-[100px]  py-1 px-2 rounded-2xl font-Corsa-Grotesk text-[#FA3246] "}>
-                    {user.amount}
+                    N {user?.amount?.toFixed(2)}
                   </pre>
                 </div>
               </TableCell>

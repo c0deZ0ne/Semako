@@ -5,7 +5,7 @@ export const DEBIT = 'DEBIT';
 export const CREDIT = 'CREDIT';
 export const SERVICEFEE = 'SERVICEFEE';
 
-export const debitAccount = (details:IAccountActionDetails) => ({
+export const debitAccount:any = (details:IAcountTransactions) => ({
   type: DEBIT,
   payload: details,
 });
@@ -15,7 +15,7 @@ export const creditAccount = (details:IAcountTransactions) => ({
     payload: details,
   });
 
-  export const serviceFee = (details:IAccountActionDetails) => ({
+  export const serviceFee = (details:IAcountTransactions) => ({
     type: DEBIT,
     payload: details,
   });

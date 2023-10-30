@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { goBack } from '../assets/icon';
-
+import scheduler, { scheduleJob } from "node-schedule"
+import toast from 'react-hot-toast';
+import { schedule } from '../redux/interfaces/Ischeme';
 export function handleGoBack() {
   const navigate = useNavigate();
 
@@ -11,6 +13,29 @@ export function handleGoBack() {
     </span>
   );
 }
+
+
+
+
+
+export function shedulePay(period: schedule, callback: () => any){
+  const rule = new scheduler.RecurrenceRule();
+
+  if (period === 'monthly') {
+    rule.month = 0; // Run every month
+  } else if (period === schedule.yearly) {
+    rule.month = 12; // Run in January
+  } else if (period === schedule.quarterly) {
+    rule.month = [0, 3, 6, 9]; // Run quarterly (January, April, July, October)
+  } else if (period === schedule.minute) {
+    rule.minute = new Array(Math.floor(60 / 1)).fill(0).map((_, index) => index * 1);
+  } else {
+    throw new Error('Invalid period. Use "monthly", "yearly", "quarterly", or a number for minutes.');
+  }
+}
+
+
+
 
   export  const calcPayStackFee = async  (cost:number) => {
     // Convert cost to a number
@@ -30,4 +55,6 @@ export function handleGoBack() {
       return { totalcost:(charge+costValue)*100,charge}
     }
   };
+
+
   

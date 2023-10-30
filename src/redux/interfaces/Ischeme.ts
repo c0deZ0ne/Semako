@@ -7,8 +7,8 @@ export interface IAcountSchem {
     isActive:boolean,
     schedule:schedule
   }
-export enum shemeType {BASIC="BASIC",INTERMEDIATE="INTERMEDIATE",ADVANCE="ADVANCE"}
-export enum schedule {MONTHLY="MONTHLY",QUATERLY="QUATERLY", YEARLY="YEARLY"}
+export enum shemeType {BASIC="BASIC",INTERMEDIATE="INTERMEDIATE",ADVANCE="ADVANCE",TEST="TEST"}
+export enum schedule {monthly="monthly",quarterly="quarterly", yearly="yearly",minute='minute'}
 
 export interface IschemeAction {
     type:string;

@@ -13,7 +13,7 @@ export const SchemeInitialState:IAcountSchem[] = [{
   isActive:false,
   amount:200,
   charge:10,
-  schedule:schedule.MONTHLY
+  schedule:schedule.monthly
 },
 {
   id:nanoid(6),
@@ -22,7 +22,7 @@ export const SchemeInitialState:IAcountSchem[] = [{
   rate:3,
   amount:300,
   charge:5,
-  schedule:schedule.YEARLY,
+  schedule:schedule.yearly,
 },
 {
   id:nanoid(6),
@@ -31,7 +31,16 @@ export const SchemeInitialState:IAcountSchem[] = [{
   rate:3,
   amount:300,
   charge:2,
-  schedule:schedule.QUATERLY,
+  schedule:schedule.quarterly,
+},
+{
+  id:nanoid(6),
+  isActive:false,
+  type:shemeType.TEST,
+  rate:3,
+  amount:300,
+  charge:2,
+  schedule:schedule.minute,
 }
 ]
  
