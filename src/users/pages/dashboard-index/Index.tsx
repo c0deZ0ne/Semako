@@ -21,6 +21,7 @@ import toast from 'react-hot-toast';
 import schedule from "node-schedule"
 import { debitAccount } from '../../../redux/actions-creators/transactionActions';
 import { shedulePay } from '../../../utils';
+import { success } from '../../../redux/actions-creators/notificationActions';
 
 function DashboardIndex() {
   const [data, setData] = useState('Last 24Hours');
@@ -46,6 +47,7 @@ const dispatch = useDispatch()
 
   const handleChangeScheme = (e:any)=>{
     dispatch(SubscribeScheme(e.target.value))
+    dispatch(success({message:"Successfuly changed your schem"}))
   }
   const tabs = ['Last 24hours', 'Last week', 'Last month', 'Last year'];
 
@@ -95,12 +97,12 @@ const dispatch = useDispatch()
                 </Tab.List>
               </div>
               <div className=" max-sm:w-[100%]  object-cover flex  max-sm:mx-[2%] ">
-                <>
+                Select Scheme :
                 <select name="" id=""  onChange={(e)=>handleChangeScheme(e)}>
                   {schemes.map((scheme)=>(<option selected={scheme.isActive} value={scheme.id}>{scheme.schedule.toLocaleLowerCase()}</option>))}
                 </select>
               
-                </>
+                
               </div>
             </div>
             <div className="flex whitespace-nowrap overflow-auto scrollbar-hide mt-10  lg:flex-row gap-5 col-span-12 w-[100%] max-md:flex-col whitespace-nowrap overflow-auto scrollbar-hide ">
