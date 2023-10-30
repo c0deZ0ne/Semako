@@ -2,6 +2,7 @@
 import SERVICES from '../../utils/webservices';
 import { IAccountActionDetails, IAcountTransactions } from '../interfaces/ITransaction';
 export const DEBIT = 'DEBIT';
+export const DELETE = 'DELETE';
 export const CREDIT = 'CREDIT';
 export const SERVICEFEE = 'SERVICEFEE';
 
@@ -17,6 +18,10 @@ export const creditAccount = (details:IAcountTransactions) => ({
 
   export const serviceFee = (details:IAcountTransactions) => ({
     type: DEBIT,
+    payload: details,
+  });
+  export const deleteTransaction = (details:IAcountTransactions) => ({
+    type: DELETE,
     payload: details,
   });
 

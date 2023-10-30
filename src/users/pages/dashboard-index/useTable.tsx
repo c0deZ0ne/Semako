@@ -8,12 +8,22 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { nanoid } from 'nanoid';
 import { IAcountTransactions } from '../../../redux/interfaces/ITransaction';
-
+import { deleteTransaction } from '../../../redux/actions-creators/transactionActions';
+import { useDispatch } from 'react-redux';
+import { startLoading } from '../../../redux/actions-creators/appSatusActions';
+import { success } from '../../../redux/actions-creators/notificationActions';
 export default function userTable({
   accountHistoryData
 }: {
   accountHistoryData: IAcountTransactions[];
 }) {
+  const dispatch = useDispatch()
+  const deletAction = (data:IAcountTransactions)=>{
+        dispatch (deleteTransaction(data))
+        dispatch (success({message:"Delete successfuly"}))
+        
+
+  }
   return (
     <TableContainer className="grid col-span-full  font-[500] text-[16px] text-[#696E7C]  w-[100%] h-[100%] whitespace-nowrap overflow-auto scrollbar-hide  whitespace-nowrap overflow-auto scrollbar-hide">
       <Table
@@ -86,13 +96,10 @@ export default function userTable({
                     {user.type}
                   </span>
                   <span
-                    className="text-[#FA3246] w-[ 91px] bg-[#FFEBED]  py-1 px-5 rounded-[8px]"
-                    // onClick={() =>
-                    //   user.action({
-                    //     id: user.id,
-                    //     action: 'Delete'
-                    //   })
-                    // }
+                    className="text-[#FA3246] w-[ 91px] bg-[#FFEBED]  py-1 px-5 rounded-[8px] cursor-pointer"
+                    onClick={() =>
+                    deletAction(user)
+                    }
                   >
                     Delete
                   </span>

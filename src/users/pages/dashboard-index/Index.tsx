@@ -46,6 +46,7 @@ const dispatch = useDispatch()
     dispatch(SubscribeScheme(e.target.value))
     dispatch(success({message:"Successfuly changed your schem"}))
   }
+ 
   const tabs = ['Last 24hours', 'Last week', 'Last month', 'Last year'];
 
   const hadlechange = (index: any) => {
