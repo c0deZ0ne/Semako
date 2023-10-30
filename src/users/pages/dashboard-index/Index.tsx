@@ -16,7 +16,7 @@ import { CombinedState } from 'redux';
 import { combinedState } from '../../../redux/reducers';
 import { useDispatch } from 'react-redux';
 import { SubscribeScheme } from '../../../redux/actions-creators/schemesActions';
-import { IAcountSchem } from '../../../redux/interfaces/Ischeme';
+import { IAcountSchem, shemeType } from '../../../redux/interfaces/Ischeme';
 import toast from 'react-hot-toast';
 import schedule from "node-schedule"
 import { debitAccount } from '../../../redux/actions-creators/transactionActions';
@@ -30,28 +30,7 @@ function DashboardIndex() {
   const schemes = useSelector((state:CombinedState<combinedState>) =>state.scheme);
   const activeScheme = schemes.find((s)=>(s.isActive===true))
 const dispatch = useDispatch()
-  useEffect(() => {
-    console.log("transaction.........",AccountBallance);
-    console.log("schemes.........",schemes);
-  }, [data,schemes]);
-
-
-    // Create a rule to run the job every 10 minutes
-// const rule = new schedule.RecurrenceRule();
-// rule.minute = new schedule.Range(0, 10, 1);
-
-// Create the scheduled job
-// const job = schedule.scheduleJob(rule, function () {
-//   console.log('Job executed every 10 minutes');
-//   user&&activeScheme&&dispatch(debitAccount({
-//     title: "service fee", amount: activeScheme.charge, email: user.email, id: nanoid(6), date: new Date(),
-//     type: 'debit'
-//   }))
-// });
-
-
-
-
+ 
   useEffect(() => {
     if(activeScheme&&activeScheme.isActive&&user){
       shedulePay(activeScheme.schedule,dispatch(debitAccount({
@@ -63,7 +42,7 @@ const dispatch = useDispatch()
         amount: activeScheme?.charge
       })))
     }
-  }, [activeScheme]);
+  }, [activeScheme?.amount]);
 
   const handleChangeScheme = (e:any)=>{
     dispatch(SubscribeScheme(e.target.value))
@@ -117,8 +96,8 @@ const dispatch = useDispatch()
               </div>
               <div className=" max-sm:w-[100%]  object-cover flex  max-sm:mx-[2%] ">
                 <>
-                <select name="" id="" onChange={(e)=>handleChangeScheme(e)}>
-                  {schemes.map((scheme)=>(<option value={scheme.id}>{scheme.schedule.toLocaleLowerCase()}</option>))}
+                <select name="" id=""  onChange={(e)=>handleChangeScheme(e)}>
+                  {schemes.map((scheme)=>(<option selected={scheme.isActive} value={scheme.id}>{scheme.schedule.toLocaleLowerCase()}</option>))}
                 </select>
               
                 </>
